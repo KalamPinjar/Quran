@@ -1,4 +1,6 @@
 import express from "express";
+import bodyParser from "body-parser";
+import fetch from "node-fetch";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
@@ -35,37 +37,44 @@ app.get("/", (req, res) => {
 });
 
 async function getVerses(id) {
-  return new Promise((resolve, reject) => {
-    const url = `https://api.quran.com/api/v4/verses/by_chapter/${id}`; // Assuming you still want to use chapter number
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        const enrichedVerses = data.verses.map((verse) => ({
-          ...verse,
-          translations: verse.translations ? verse.translations[0].text : "", // Simplified for demonstration
-        }));
-        resolve(enrichedVerses);
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  });
+  const url = `https://api.quran.com/api/v4/verses/by_chapter/${id}?language=en`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    if (!data.verses) {
+      throw new Error("No verses found in the API response.");
+    }
+
+    const enrichedVerses = data.verses.map((verse) => ({
+      verse_number: verse.verse_number,
+      verse_key: verse.verse_key,
+      translations:
+        verse.translations && verse.translations.length > 0
+          ? verse.translations[0].text
+          : "No translation available",
+      arabicText:
+        verse.words && verse.words.length > 0
+          ? verse.words[0].text_uthmani
+          : "No Arabic text available",
+    }));
+
+    return enrichedVerses;
+  } catch (err) {
+    console.error("Error fetching verses:", err);
+    throw err;
+  }
 }
 
 app.get("/surah/:id", async (req, res) => {
   try {
     const surahId = req.params.id;
-    // Fetch the surah data based on the ID
-    const surahData = await getVerses(surahId); // Assuming getVerses is correctly implemented
-
-    // Check if surahData is not undefined and is an array
-    if (Array.isArray(surahData)) {
-      console.log("Fetched surah data:", surahData);
-      res.render(join(__dirname, "views", "surah.ejs"), {
-        surah: surahData,
-      });
+    const verses = await getVerses(surahId);
+    console.log(verses);
+    if (Array.isArray(verses) && verses.length > 0) {
+      // Render the surah.ejs view with the surah data
+      res.render(join(__dirname, "views", "surah.ejs"), { surah: { verses } });
     } else {
-      // Handle the case where surahData is not an array
       console.error(
         "Failed to fetch surah data or data is not in the expected format."
       );

@@ -1,21 +1,15 @@
 <%- include ("partials/header") %>
 
-<div class="container">
+<div
+  class="flex flex-col justify-center items-center p-5 w-full h-fit surah-container text-center text-gray-800"
+>
   <% if (surah && Array.isArray(surah.verses) && surah.verses.length > 0) { %>
   <ul>
     <% surah.verses.forEach(verse => { %>
     <li>
       Verse Number: <%= verse.verse_number %> (<%= verse.verse_key %>)<br />
-      Hizb Number: <%= verse.hizb_number %><br />
-      <strong>Verse Key:</strong> <%= verse.verse_key %><br />
       <strong>English Translation:</strong> <%= verse.translations %><br />
-      <strong>Arabic Text (Uthmani):</strong> <%= verse.text_uthmani %><br />
-      Rub El Hizb Number: <%= verse.rub_el_hizb_number %><br />
-      Ruku Number: <%= verse.ruku_number %><br />
-      Manzil Number: <%= verse.manzil_number %><br />
-      Sajdah Number: <%= verse.sajdah_number || 'None' %><br />
-      Page Number: <%= verse.page_number %><br />
-      Juz Number: <%= verse.juz_number %><br />
+      <strong>Arabic Text (Uthmani):</strong> <%= verse.arabicText %><br />
     </li>
     <% }); %>
   </ul>
@@ -24,4 +18,4 @@
   <% } %>
 </div>
 
-<%- include ("partials/footer.ejs") %>
+<%- include ("partials/footer") %>
