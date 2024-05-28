@@ -1,0 +1,28 @@
+<div
+    class="bg-gray-100 mt-10 p-10 w-full text-center md:text-left"
+  >
+    <div class="flex flex-wrap justify-between items-center bg-white m-4 p-4 rounded w-full">
+      <p class="font-bold">Total Ayahs: <%= meta.ayahs.count %></p>
+      <p class="text-gray-600">Total Surahs: <%= meta.surahs.count %></p>
+      <p class="text-gray-600">Total Juzs: <%= meta.juzs.count %></p>
+    </div>
+
+  </div>
+
+
+    <div
+      class="flex flex-wrap justify-center md:justify-start bg-gray-100 mt-10 p-10 divide-y w-full text-center md:text-left surahs"
+    >
+      <% surahs.forEach((surah) => { %>
+      <a href="/surah/<%= surah.number %>">
+        <div class="bg-white hover:bg-gray-200 m-4 p-4 rounded w-80">
+          <h1 class="font-bold text-3xl"><%= surah.name %></h1>
+          <h1 class="font-bold text-3xl"><%= surah.englishName %></h1>
+          <p class="text-gray-600"><%= surah.englishNameTranslation %></p>
+          <p class="text-gray-600">Ayahs: <%= surah.numberOfAyahs %></p>
+          <p class="text-gray-600">Revelation: <%= surah.revelationType %></p>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+  </div>

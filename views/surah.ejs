@@ -1,21 +1,35 @@
 <%- include ("partials/header") %>
 
 <div
-  class="flex flex-col justify-center items-center p-5 w-full h-fit surah-container text-center text-gray-800"
+  class="flex flex-col justify-center items-center bg-gray-100 p-5 w-full h-fit surah-container text-center text-gray-800"
 >
-  <% if (surah && Array.isArray(surah.verses) && surah.verses.length > 0) { %>
-  <ul>
-    <% surah.verses.forEach(verse => { %>
-    <li>
-      Verse Number: <%= verse.verse_number %> (<%= verse.verse_key %>)<br />
-      <strong>English Translation:</strong> <%= verse.translations %><br />
-      <strong>Arabic Text (Uthmani):</strong> <%= verse.arabicText %><br />
-    </li>
+  <h1 class="mb-2 border-b-2 font-bold text-5xl"><%= surah.number %>.</h1>
+
+  <h2 class="font-bold text-3xl">
+    <%= surah.englishName %> <%= surah.name %>
+    <br />
+    (<%= surah.englishNameTranslation%>)
+  </h2>
+  <p class="text-gray-600">
+    <%= surah.revelationType %> (Numbers of Ayahs: <%= surah.numberOfAyahs %>)
+  </p>
+  <p class="text-gray-600">Juz no. <%= surah.ayahs[0].juz %></p>
+</div>
+
+<div class="flex flex-col justify-center items-center">
+  <div class="text-right flex flex-col justify-center items-center py-2 border-t-2 w-4/5 font-bold text-2xl">
+    <% surah.ayahs.forEach((verse) => { %>
+      <%= verse.numberInSurah %>.
+      <%= verse.text %><br/>
     <% }); %>
-  </ul>
-  <% } else { %>
-  <p>No verses found.</p>
-  <% } %>
+  </div>
+  <div class="flex flex-col justify-center items-center mt-5 py-2 border-t-2 w-4/5 font-bold text-left text-xl">
+    <% fullquran.surahs[surah.number - 1].ayahs.forEach((verse) => { %>
+      <%= verse.number %>.
+      <%= verse.text %><br/>
+    <% }); %>
+  </div>
+  
 </div>
 
 <%- include ("partials/footer") %>
