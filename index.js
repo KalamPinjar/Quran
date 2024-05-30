@@ -17,12 +17,7 @@ app.set("views", join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
-  const data = await metaData();
-  const otherData = await otherMetaData();
-  res.render(join(__dirname, "views", "index.ejs"), {
-    surahs: data,
-    meta: otherData,
-  });
+  res.render(join(__dirname, "views", "index.ejs"));
 });
 
 app.get("/surah/:id", async (req, res) => {
@@ -35,8 +30,13 @@ app.get("/surah/:id", async (req, res) => {
   });
 });
 
-app.get("/quran", (req, res) => {
-  res.render(join(__dirname, "views", "quran.ejs"));
+app.get("/quran", async (req, res) => {
+  const data = await metaData();
+  const otherData = await otherMetaData();
+  res.render(join(__dirname, "views", "quran.ejs"), {
+    surahs: data,
+    meta: otherData,
+  });
 });
 
 const port = 5500;
