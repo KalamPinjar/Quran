@@ -1,11 +1,10 @@
-const fullQuran = async () => {
-  const url =
-    "https://al-qur-an-all-translations.p.rapidapi.com/v1/quran/en.asad";
+const audioData = async (name) => {
+  const url = `https://online-quran-api.p.rapidapi.com/surahs/${name}`;
   const options = {
     method: "GET",
     headers: {
       "x-rapidapi-key": "e262144e3cmsh3e010f98164499bp1d81d8jsn8750c6118366",
-      "x-rapidapi-host": "al-qur-an-all-translations.p.rapidapi.com",
+      "x-rapidapi-host": "online-quran-api.p.rapidapi.com",
     },
   };
 
@@ -13,10 +12,10 @@ const fullQuran = async () => {
     const response = await fetch(url, options);
     const result = await response.text();
     const data = JSON.parse(result);
-    return data.data;
+    return data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export default fullQuran;
+export default audioData;

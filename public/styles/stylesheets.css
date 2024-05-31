@@ -1,6 +1,6 @@
 :root {
     --primary-color: #0a0a0a;
-    --secondary-color: #eeeeee;
+    --secondary-color: #e0e0e0;
     --tertiary-color: #f0f0f0;
     --quaternary-color: #000000;
 }
@@ -15,6 +15,22 @@
 
 html {
     color-scheme: light dark;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #eeeeee;
+    border-radius: 10px;
+    border: 1px solid #eeeeee;
 }
 
 body {
@@ -69,8 +85,8 @@ li {
 }
 
 nav a {
+    color: var(--secondary-color);
     text-decoration: none;
-    color: #333;
     font-size: 1.2rem;
     font-weight: 300;
     margin: 0 10px;
@@ -117,22 +133,23 @@ footer {
 
 /* Lenis Css  */
 
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
     height: auto;
-  }
-  
-  .lenis.lenis-smooth {
+}
+
+.lenis.lenis-smooth {
     scroll-behavior: auto !important;
-  }
-  
-  .lenis.lenis-smooth [data-lenis-prevent] {
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
     overscroll-behavior: contain;
-  }
-  
-  .lenis.lenis-stopped {
+}
+
+.lenis.lenis-stopped {
     overflow: hidden;
-  }
-  
-  .lenis.lenis-smooth iframe {
+}
+
+.lenis.lenis-smooth iframe {
     pointer-events: none;
-  }
+}

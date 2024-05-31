@@ -3,7 +3,8 @@ import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { metaData, otherMetaData } from "./src/metaData.js";
 import surahData from "./src/surah.js";
-import fullQuran from "./src/fullQuran.js";
+import audioData from "./src/Surahaudio.js";
+import surahListNames from "./src/surahList.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -23,10 +24,13 @@ app.get("/", async (req, res) => {
 app.get("/surah/:id", async (req, res) => {
   const id = req.params.id;
   const Surahverses = await surahData(id);
-  const quran = await fullQuran();
+  const surahList = await surahListNames();
+  const audioId = await (surahList[id - 1]);
+  const audio = await audioData(audioId.name);
   res.render(join(__dirname, "views", "surah.ejs"), {
     surah: Surahverses,
-    fullquran: quran,
+    audio: audio,
+    surahList: surahList,
   });
 });
 
