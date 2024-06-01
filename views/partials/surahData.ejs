@@ -1,28 +1,25 @@
-<div
-    class="border-2 p-10 w-full h-fit text-center md:text-left"
+<div class="flex flex-col justify-center items-center border-2 bg-black p-10 w-full h-fit text-center md:text-left">
+  <div
+    class="flex flex-wrap justify-between items-center border-2 bg-zinc-800 m-4 p-4 rounded w-full"
   >
-    <div class="flex flex-wrap justify-between items-center border-2 bg-zinc-800 m-4 p-4 rounded w-full">
-      <p >Total Ayahs: <%= meta.ayahs.count %></p>
-      <p >Total Surahs: <%= meta.surahs.count %></p>
-      <p >Total Juzs: <%= meta.juzs.count %></p>
-    </div>
+    <p>Total Ayahs: <%= meta.ayahs.count %></p>
+    <p>Total Surahs: <%= meta.surahs.count %></p>
+    <p>Total Juzs: <%= meta.juzs.count %></p>
+  </div>
 
-
-
-    <div
-      class="flex flex-wrap justify-center items-center border-2 mt-10 p-10 w-fit h-fit text-center md:text-left"
-    >
-      <% surahs.forEach((surah) => { %>
-      <a href="/surah/<%= surah.number %>">
-        <div class="border-2 bg-zinc-800 hover:bg-zinc-600 m-4 p-4 rounded w-60">
-          <h1 class="font-bold text-3xl"><%= surah.name %></h1>
-          <h1 class="font-bold text-3xl"><%= surah.englishName %></h1>
-          <p class="text-slate-300"><%= surah.englishNameTranslation %></p>
-          <p class="text-slate-300">Ayahs: <%= surah.numberOfAyahs %></p>
-          <p class="text-slate-300">Revelation: <%= surah.revelationType %></p>
-        </div>
-      </a>
-      <% }) %>
-    </div>
+  <div
+    class="flex flex-wrap justify-center items-center border-2 bg-zinc-950 mt-10 p-10 w-fit h-fit text-center md:text-left"
+  >
+    <% surahs.forEach((surah) => { %>
+    <a href="/surah/<%= surah.number %>">
+      <div class="border-2 bg-zinc-800 hover:bg-zinc-600 m-4 p-4 rounded w-60">
+        <h1 class="font-bold text-3xl"><%= surah.name %></h1>
+        <h1 class="font-bold text-3xl"><%= surah.englishName %></h1>
+        <p class="text-slate-300"><%= surah.englishNameTranslation %></p>
+        <p class="text-slate-300">Ayahs: <%= surah.numberOfAyahs %></p>
+        <p class="text-slate-300">Revelation: <%= surah.revelationType %></p>
+      </div>
+    </a>
+    <% }) %>
   </div>
 </div>

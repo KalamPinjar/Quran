@@ -1,9 +1,7 @@
 <%- include ("partials/header") %>
 
-<div class="flex flex-col justify-center items-center mt-10 h-[20vh]">
-  <h1 class="border-b-4 font-bold text-4xl capitalize"><%= name %></h1>
-  <h2 class="font-bold text-3xl capitalize"><%= chapter %></h2>
-</div>
+
+<%- include ("partials/hadithNavigation") %> 
 
 <div
   class="flex flex-wrap justify-center items-center border-2 bg-black mt-10 p-10 w-fit h-fit text-center md:text-left"
@@ -14,7 +12,7 @@
     class="flex flex-col justify-center items-center m-4 p-4 border-b-2 rounded w-full h-fit text-center item"
   >
     <h2 class="p-2 font-bold text-2xl text-slate-400 capitalize">
-      Chapter On: <%= hadith.chapterId %>. [<%= hadith.headingEnglish %>]<br />
+      Chapter On: [<%= hadith.headingEnglish %>]<br />
       [<%= hadith.headingArabic %>]
     </h2>
   </div>

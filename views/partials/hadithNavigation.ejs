@@ -1,0 +1,47 @@
+<div
+  class="top-10 sticky flex flex-wrap justify-between items-center bg-slate-950 mt-10 p-10 w-full h-fit text-center md:text-left"
+>
+  <div class="flex flex-wrap justify-center items-center gap-5">
+    <a class="border-2 p-2 cursor" href="/hadith/page/1">
+      First Page:
+      <button class="bg-transparent w-14 h-fit">1</button>
+    </a>
+    <a
+      class="border-2 p-2 cursor"
+      href="/hadith/page/<% hadiths.current_page %>"
+    >
+      <button class="bg-transparent w-36 h-fit">
+        Current Page: <%= hadiths.current_page %>
+      </button>
+    </a>
+  </div>
+
+  <a class="border-2 p-2 cursor" href="/hadith/books">
+    <button class="bg-transparent w-36 h-fit">All the Books</button>
+  </a>
+
+  <div class="flex flex-wrap justify-center items-center gap-5">
+    <% if(hadiths.current_page != 1){%>
+    <a
+      class="border-2 p-2 cursor"
+      href="/hadith/page/<%= hadiths.current_page + 1 %>"
+    >
+      <button class="bg-transparent w-36 h-fit">
+        Previous Page: <%= hadiths.current_page - 1 %>
+      </button>
+    </a>
+    <%}%>
+    <a
+      class="border-2 p-2 cursor"
+      href="/hadith/page/<%= hadiths.current_page + 1 %>"
+    >
+      <button class="bg-transparent w-36 h-fit">
+        Next Page: <%= hadiths.current_page + 1 %>
+      </button>
+    </a>
+  </div>
+  <a class="border-2 p-2 cursor" href="">
+    Last Page:
+    <button class="bg-transparent w-14 h-fit"><%= hadiths.last_page%></button>
+  </a>
+</div>
