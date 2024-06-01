@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #0a0a0a;
+    --primary-color: #000000;
     --secondary-color: #e0e0e0;
     --tertiary-color: #f0f0f0;
     --quaternary-color: #000000;
@@ -101,35 +101,63 @@ nav a:hover {
     text-decoration: underline;
 }
 
-.container {
+
+.container-quran {
+    background: url(/images/bgQuran.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: relative;
-    height: fit-content;
-    max-width: 100%;
+    height: 100vh;
+    width: 100%;
     margin: 0 auto;
+    animation: bg 3s ease-in-out forwards;
 }
 
+.container-hadith {
+    background: url(/images/bgHadith.jpg);
+    background-size: cover;
+    background-position: 50% 90%;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    animation: bg 3s ease-in-out forwards;
+}
+
+@keyframes bg {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 main {
     background: var(--primary-color);
     position: relative;
     height: 100vh;
     width: 100%;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding: 10px;
 }
 
 footer {
     position: relative;
     width: 100%;
-    height: 40%;
     background: var(--primary-color);
     border-top: 1px solid #ccc;
     padding: 20px 0;
     text-align: center;
 }
 
+audio {
+    filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+    width: 200px;
+    height: 25px;
+}
 
 /* Lenis Css  */
 

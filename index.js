@@ -5,6 +5,9 @@ import { metaData, otherMetaData } from "./src/metaData.js";
 import surahData from "./src/surah.js";
 import audioData from "./src/Surahaudio.js";
 import surahListNames from "./src/surahList.js";
+import hadithBooks from "./src/hadithBooks.js";
+import hadithChapters from "./src/hadithChp.js";
+import hadithData from "./src/hadith.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -25,7 +28,7 @@ app.get("/surah/:id", async (req, res) => {
   const id = req.params.id;
   const Surahverses = await surahData(id);
   const surahList = await surahListNames();
-  const audioId = await (surahList[id - 1]);
+  const audioId = await surahList[id - 1];
   const audio = await audioData(audioId.name);
   res.render(join(__dirname, "views", "surah.ejs"), {
     surah: Surahverses,
@@ -40,6 +43,33 @@ app.get("/quran", async (req, res) => {
   res.render(join(__dirname, "views", "quran.ejs"), {
     surahs: data,
     meta: otherData,
+  });
+});
+
+app.get("/hadith", async (req, res) => {
+  const data = await hadithBooks();
+  res.render(join(__dirname, "views", "hadithbooks.ejs"), {
+    books: data,
+  });
+});
+
+app.get("/hadith/books/:name", async (req, res) => {
+  const name = req.params.name;
+  const chapters = await hadithChapters(name);
+  res.render(join(__dirname, "views", "hadithchapters.ejs"), {
+    chapters: chapters,
+    name: name,
+  });
+});
+
+app.get("/hadith/books/:name/chapters/:chapter", async (req, res) => {
+  const name = req.params.name;
+  const chapter = req.params.chapter;
+  const hadiths = await hadithData();
+  res.render(join(__dirname, "views", "hadith.ejs"), {
+    hadiths: hadiths,
+    name: name,
+    chapter: chapter,
   });
 });
 

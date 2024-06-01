@@ -23,8 +23,8 @@
     class="flex flex-col py-2 border-t-2 divide-y w-1/2 h-full font-bold text-2xl leading-relaxed"
   >
     <% audio.surah.forEach((verse) => { %>
-    <p class="text-right"><%= verse.verse %>. <%= verse.arabic %><br /></p>
-    <p><%= verse.english %></p>
+    <p class="text-right mt-4 mb-4 font-bold text-3xl"><%= verse.verse %>. <%= verse.arabic %></p>
+    <p class="mt-4 mb-4 text-gray-300 text-left text-xl"><%= verse.english %></p>
     <br />
     <% }); %>
   </div>

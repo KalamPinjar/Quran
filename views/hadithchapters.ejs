@@ -1,0 +1,23 @@
+<%- include ("partials/header") %>
+<div class="flex flex-col justify-center items-center mt-10 h-[20vh]">
+  <h1 class="border-b-4 font-bold text-4xl capitalize"><%= name %></h1>
+</div>
+
+<div
+  class="flex flex-wrap justify-center items-center border-2 bg-[#0a0a0a] mt-10 p-10 w-fit h-fit text-center md:text-left"
+>
+  <% chapters.chapters.forEach((chapter) => { %>
+  <a href="/hadith/books/<%= name %>/chapters/<%= chapter.chapterEnglish %>">
+    <div
+      class="flex flex-col justify-center border-2 bg-zinc-800 hover:bg-zinc-600 m-4 p-4 rounded w-80 h-52 text-center"
+    >
+      <h1 class="font-bold text-3xl"><%= chapter.chapterNumber %>.</h1>
+      <h2 class="font-bold text-2xl">(<%= chapter.chapterArabic %>)</h2>
+      <h2 class="font-bold text-2xl"><%= chapter.chapterEnglish %></h2>
+    </div>
+  </a>
+
+  <% }) %>
+</div>
+
+<%- include ("partials/footer") %>

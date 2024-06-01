@@ -1,0 +1,32 @@
+<%- include ("partials/header") %>
+<div class="flex flex-col justify-center items-center mt-10 h-[20vh]">
+  <h1 class="font-bold text-5xl">Collection Of Books of Hadith</h1>
+</div>
+<div
+  class="flex flex-wrap justify-center items-center border-2 bg-[#0a0a0a] mt-10 p-10 w-fit h-fit text-center md:text-left"
+>
+  <% books.books.forEach((book) => { %>
+  <a href="/hadith/books/<%= book.bookSlug %>">
+    <div
+      class="flex flex-col justify-center border-2 bg-zinc-800 hover:bg-zinc-600 m-4 p-4 rounded w-80 h-52 text-center"
+    >
+      <h2 class="font-bold text-2xl"><%= book.bookName %></h2>
+      <p class="mb-2 border-b-4 text-gray-600 capitalize">
+        Written By:<%= book.writerName %> رَحِمَهُ ٱللَّٰهُ
+      </p>
+      <% if (book.hadiths_count != 0){ %>
+      <p class="text-gray-600 capitalize">
+        Total Hadith: <%= book.hadiths_count %>
+      </p>
+      <% } %> <% if (book.chapters_count != 0){ %>
+      <p class="text-gray-600 capitalize">
+        Total Chapters: <%= book.chapters_count %>
+      </p>
+      <% } %>
+    </div>
+  </a>
+
+  <% }) %>
+</div>
+
+<%- include ("partials/footer") %>

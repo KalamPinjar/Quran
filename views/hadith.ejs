@@ -1,0 +1,48 @@
+<%- include ("partials/header") %>
+
+<div class="flex flex-col justify-center items-center mt-10 h-[20vh]">
+  <h1 class="border-b-4 font-bold text-4xl capitalize"><%= name %></h1>
+  <h2 class="font-bold text-3xl capitalize"><%= chapter %></h2>
+</div>
+
+<div
+  class="flex flex-wrap justify-center items-center border-2 bg-black mt-10 p-10 w-fit h-fit text-center md:text-left"
+>
+  <% hadiths.data.forEach((hadith) => { %> <% if(hadith.headingEnglish ||
+  hadith.headingArabic != null){ %>
+  <div
+    class="flex flex-col justify-center items-center m-4 p-4 border-b-2 rounded w-full h-fit text-center item"
+  >
+    <h2 class="p-2 font-bold text-2xl text-slate-400 capitalize">
+      Chapter On: <%= hadith.chapterId %>. [<%= hadith.headingEnglish %>]<br />
+      [<%= hadith.headingArabic %>]
+    </h2>
+  </div>
+  <% } %>
+
+  <div
+    class="flex flex-col justify-center items-center border-2 bg-gray-950 m-4 p-4 rounded w-full h-fit text-center item"
+  >
+    <div
+      class="flex flex-col justify-center items-center mt-5 w-3/4 h-fit text-slate-400"
+    >
+      <h2 class="mb-2 font-bold text-xl"><%= hadith.englishNarrator %></h2>
+      <p class="mb-2 font-bold text-xl">(<%= hadith.hadithArabic %>)</p>
+      <p class="font-bold text-xl"><%= hadith.hadithEnglish %></p>
+    </div>
+
+    <div
+      class="flex flex-col justify-center items-center mt-8 border-t-2 text-slate-400"
+    >
+      <p class="mt-5 text-l">Hadith Number: <%= hadith.hadithNumber %></p>
+      <p class="text-l">
+        Volume: <%= hadith.volume %> ,Book-Name: <%= hadith.book.bookName %>
+        ,Chapter-Name: <%= hadith.chapter.chapterEnglish %>
+      </p>
+      <p class="font-bold text-l">Grading: <%= hadith.status %></p>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+<%- include ("partials/footer") %>
