@@ -1,4 +1,5 @@
 import express from "express";
+import bodyParser from "body-parser";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { metaData, otherMetaData } from "./src/metaData.js";
@@ -39,6 +40,7 @@ app.get("/surah/:id", async (req, res) => {
 
 app.get("/quran/:id", async (req, res) => {
   const id = req.params.id;
+  
   const Surahverses = await surahData(id);
   const surahList = await surahListNames();
   const audioId = await surahList[id - 1];
@@ -69,29 +71,31 @@ app.get("/hadith/books", async (req, res) => {
 
 app.get("/hadith/books/:name", async (req, res) => {
   const name = req.params.name;
-  const page = req.params.page;
+  const number = req.params.number;
   const chapters = await hadithChapters(name);
-  const url = `https://www.hadithapi.com/api/hadiths?page=${page}`;
+  const url = `https://www.hadithapi.com/api/hadiths?book=${name}`;
   const navigate = await hadithData(url);
   const hadiths = await navigate;
   res.render(join(__dirname, "views", "hadithchapters.ejs"), {
     chapters: chapters,
     name: name,
     hadiths: hadiths,
-    page: page,
   });
 });
 
 app.get(
-  "/hadith/page/:page",
+  "/hadith/books/:name/chapter/:number/page/:page",
   async (req, res) => {
+    const name = req.params.name;
+    const number = req.params.number;
     const page = req.params.page;
-    const url = `https://www.hadithapi.com/api/hadiths?page=${page}`;
+    const url = `https://www.hadithapi.com/api/hadiths?book=${name}&chapter=${number}&page=${page}`;
     const navigate = await hadithData(url);
     const hadiths = await navigate;
     res.render(join(__dirname, "views", "hadith.ejs"), {
       hadiths: hadiths,
-      page: page,
+      name: name,
+      number: number,
     });
   }
 );

@@ -2,16 +2,13 @@
 <div class="flex flex-col justify-center items-center mt-10 h-[20vh]">
   <h1 class="mt-5 border-b-4 font-bold text-4xl capitalize"><%= name %></h1>
   <p class="text-gray-400 capitalize">these are the chapters under <%= name %></p>
-  <a href="/hadith/books/<%= name %>/page/<%= hadiths.current_page %>">
-    <button class="border-2 hover:bg-black mt-5 px-8 py-2 font-bold text-xl hover:text-white capitalize">Start Reading from here</button>
-  </a>
 </div>
 
 <div
   class="flex flex-wrap justify-center items-center border-2 bg-[#0a0a0a] mt-10 p-10 w-fit h-fit text-center md:text-left"
 >
   <% chapters.chapters.forEach((chapter) => { %>
-  <a href="/hadith/books/<%= name %>/page/<%= hadiths.current_page %>">
+  <a href="/hadith/books/<%= name %>/chapter/<%= chapter.chapterNumber %>/page/1">
     <div
       class="flex flex-col justify-center border-2 bg-zinc-800 hover:bg-zinc-600 m-4 p-4 rounded w-80 h-52 text-center"
     >

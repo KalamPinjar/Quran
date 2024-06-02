@@ -1,5 +1,5 @@
 const surahData = async (id) => {
-  const url = `https://al-qur-an-all-translations.p.rapidapi.com/v1/surah/${id}?id=1`;
+  const url = `https://al-qur-an-all-translations.p.rapidapi.com/v1/surah/${id}`;
   const options = {
     method: "GET",
     headers: {
@@ -19,4 +19,4 @@ const surahData = async (id) => {
   }
 };
 
-export default  surahData;
+export default surahData;

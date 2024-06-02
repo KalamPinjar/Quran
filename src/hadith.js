@@ -1,6 +1,6 @@
-const hadithData = async (page) => {
+const hadithData = async (url) => {
   const apiUrl =
-  `${page}&apiKey=$2y$10$uYlNcaKQat4riNhe414YAu19NUOUIxAjmvxf1x5j7TgzfiEYelA6`;
+  `${url}&apiKey=$2y$10$uYlNcaKQat4riNhe414YAu19NUOUIxAjmvxf1x5j7TgzfiEYelA6`;
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
