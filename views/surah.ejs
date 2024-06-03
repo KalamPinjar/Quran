@@ -3,11 +3,11 @@
   <%- include ("partials/audio.ejs") %>
 </div>
 <div
-  class="flex flex-col justify-center items-center bg-slate-950 mt-64 p-5 border-b-2 w-full h-fit surah-container text-center text-gray-800"
+  class="flex flex-col justify-center items-center border-slate-500 mt-64 p-5 border-b-2 w-full h-fit surah-container text-center text-gray-800"
 >
-  <h1 class="mb-2 border-b-2 font-bold text-5xl"><%= surah.number %>.</h1>
+  <h1 class="border-slate-500 mb-2 border-b-2 font-bold text-5xl text-grey-400"><%= surah.number %>.</h1>
 
-  <h2 class="font-bold text-3xl">
+  <h2 class="font-bold text-3xl text-gray-200">
     <%= surah.englishName %> <%= surah.name %>
     <br />
     (<%= surah.englishNameTranslation%>)
@@ -18,19 +18,19 @@
   <p class="text-gray-300">Juz no. <%= surah.ayahs[0].juz %></p>
 </div>
 <div
-  class="flex flex-col justify-center items-center bg-slate-950 p-5 w-full h-fit text-center"
+  class="flex flex-col justify-center items-center p-5 w-full h-fit text-center"
 >
   <div
     class="flex flex-col justify-center items-center bg-zinc-950 w-3/6 h-fit"
   >
     <div
-      class="flex flex-col py-2 p-2 border-t-2 divide-y w-full h-full font-bold text-2xl leading-relaxed"
+      class="flex flex-col p-10 border-t-2 divide-y w-full h-full font-bold text-2xl leading-relaxed"
     >
       <% audio.surah.forEach((verse) => { %>
-      <p class="text-right mt-4 mb-4 font-bold text-3xl text-slate-300">
+      <p class="text-right p-4 font-bold text-3xl text-slate-300">
         <%= verse.verse %>. <%= verse.arabic %>
       </p>
-      <p class="mt-4 mb-4 text-left text-slate-300 text-xl">
+      <p class="mt-4 mb-4 p-4 text-left text-slate-300 text-xl">
         <%= verse.english %>
       </p>
       <br />

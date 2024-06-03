@@ -4,7 +4,7 @@
 <%- include ("partials/hadithNavigation") %> 
 
 <div
-  class="flex flex-wrap justify-center items-center border-2 bg-black mt-10 p-10 w-fit h-fit text-center md:text-left"
+  class="flex flex-wrap justify-center items-center mt-10 p-10 w-fit h-fit text-center md:text-left"
 >
   <% hadiths.data.forEach((hadith) => { %> <% if(hadith.headingEnglish ||
   hadith.headingArabic != null){ %>
@@ -19,7 +19,7 @@
   <% } %>
 
   <div
-    class="flex flex-col justify-center items-center border-2 bg-gray-950 m-4 p-4 rounded w-full h-fit text-center item"
+    class="flex flex-col justify-center items-center border-2 border-slate-500 bg-gray-950 m-4 p-4 rounded w-full h-fit text-center item"
   >
     <div
       class="flex flex-col justify-center items-center mt-5 w-3/4 h-fit text-slate-400"
@@ -30,7 +30,7 @@
     </div>
 
     <div
-      class="flex flex-col justify-center items-center mt-8 border-t-2 text-slate-400"
+      class="flex flex-col justify-center items-center border-slate-500 mt-8 border-t-2 text-slate-400"
     >
       <p class="mt-5 text-l">Hadith Number: <%= hadith.hadithNumber %></p>
       <p class="text-l">

@@ -1,89 +1,77 @@
 <div
-  class="top-10 sticky flex flex-wrap justify-around items-center border-2 bg-slate-950 mt-10 p-10 w-full h-fit text-center md:text-left"
+  class="top-10 sticky flex flex-wrap justify-around items-center border-2 border-slate-500 border-slate-500 bg-slate-950 mt-10 p-10 w-full h-fit text-center md:text-left"
 >
   <div class="flex flex-wrap justify-center items-center gap-1">
     <a
-      class="border-2 p-2 cursor"
-      href="/hadith/books/<%= name %>/chapter/<%= number %>/page/1"
+      class="border-2 border-slate-500 p-2 cursor"
+      href="/hadith/books/<%= name %>"
     >
-      <button class="bg-transparent w-full h-fit">First Page: 1</button> 
-    </a>
-    <a
-      class="border-2 p-2 cursor"
-      href="/hadith/books/<%= name %>/chapter/<%= number %>/page/<%= hadiths.current_page %>"
-    >
-      <button class="bg-transparent w-full h-fit"> 
-        Current Page: <%= hadiths.current_page %>
-      </button>
-    </a>
-  </div>
-
-  <div class="flex flex-wrap justify-center items-center gap-1">
-    <a class="border-2 p-2 cursor" href="/hadith/books">
       <button class="bg-transparent w-full h-fit capitalize">
-        All Books of Hadith
-      </button>
-    </a>
-    <a class="border-2 p-2 cursor" href="/hadith/books/<%= name %>">
-      <button class="bg-transparent w-full h-fit capitalize">
-        All Chapters of <%= name %>
+        All Chapters
       </button>
     </a>
     <a
-      class="border-2 p-2 cursor"
-      href="/hadith/books/<%= name %>/chapter/<%= +number + 1%>/page/1"
+      class="border-2 border-slate-500 p-2 cursor"
+      href=""
+      
     >
       <button class="bg-transparent w-full h-fit capitalize">
-        On Chapter: <%= hadiths.data[0].chapter.chapterEnglish %>
+        On Chp: <%= hadiths.data[0].chapter.chapterEnglish %>
       </button>
     </a>
     <% if(number != 1){%>
     <a
-      class="border-2 p-2 cursor"
+      class="border-2 border-slate-500 p-2 cursor"
       href="/hadith/books/<%= name %>/chapter/<%= +number - 1%>/page/1"
     >
-      <button class="bg-transparent w-full h-fit capitalize">
-        ⏮ Chapter  
-      </button>
+      <button class="bg-transparent w-full h-fit capitalize">Chp ⏮</button>
     </a>
     <%}%>
     <a
-      class="border-2 p-2 cursor"
+      class="border-2 border-slate-500 p-2 cursor"
       href="/hadith/books/<%= name %>/chapter/<%= +number + 1%>/page/1"
     >
-      <button class="bg-transparent w-full h-fit capitalize">
-        ⏭ Chapter
-      </button>
+      <button class="bg-transparent w-full h-fit capitalize">Chp ⏭</button>
     </a>
   </div>
 
   <div class="flex flex-wrap justify-center items-center gap-1">
+    <a
+      class="p-2 cursor"
+      href="/hadith/books/<%= name %>/chapter/<%= number %>/page/1"
+    >
+      <button class="bg-transparent w-full h-fit">1</button>
+    </a>
+
+    /
+    <a
+      class="p-2 cursor"
+      href="/hadith/books/<%= name %>/chapter/<%= number %>/page/<%= hadiths.last_page%>"
+    >
+      <button class="bg-transparent w-full h-fit">
+        <%= hadiths.last_page%>
+      </button>
+    </a>
+  </div>
+  <div class="flex flex-wrap justify-center items-center gap-1">
     <% if(hadiths.current_page != 1){%>
     <a
-      class="border-2 p-2 cursor"
+      class="border-2 border-slate-500 p-2 cursor"
       href="/hadith/books/<%= name %>/chapter/<%= number %>/page/<%= hadiths.current_page - 1 %>"
     >
       <button class="bg-transparent w-full h-fit">
-        ⏮ : <%= hadiths.current_page - 1 %>
+        ⏮ <%= hadiths.current_page - 1 %>
       </button>
     </a>
     <%}%> <% if(hadiths.current_page != hadiths.last_page){ %>
     <a
-      class="border-2 p-2 cursor"
+      class="border-2 border-slate-500 p-2 cursor"
       href="/hadith/books/<%= name %>/chapter/<%= number %>/page/<%= hadiths.current_page + 1 %>"
     >
       <button class="bg-transparent w-full h-fit">
-        ⏭ : <%= hadiths.current_page + 1 %>
+        ⏭ <%= hadiths.current_page + 1 %>
       </button>
     </a>
     <%}%>
-    <a
-      class="border-2 p-2 cursor"
-      href="/hadith/books/<%= name %>/chapter/<%= number %>/page/<%= hadiths.last_page%>"
-    >
-      <button class="bg-transparent w-full h-fit">
-        Last Page: <%= hadiths.last_page%>
-      </button>
-    </a>
   </div>
 </div>
